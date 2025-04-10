@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+Technical_training.access_estate_property,access_estate_property,Technical_training.model_estate_property,base.group_user,1,1,1,1
+Technical_training.access_estate_property_manager,access_estate_property_manager,Technical_training.model_estate_property,Technical_training.estate_manager,1,1,1,1
+Technical_training.access_estate_property_type,access_estate_property_type,Technical_training.model_estate_property_type,base.group_user,1,1,1,1
+Technical_training.access_estate_property_tag,access_estate_property_tag,Technical_training.model_estate_property_tag,base.group_user,1,1,1,1

@@ -1,0 +1,16 @@
+<odoo>
+    <menuitem id="root_level" name="Real_estate">
+        <menuitem id="second_level" name="Advertaising">
+
+            <menuitem id="third_level" name="Properties" action="Technical_training.test_record"/>
+
+        </menuitem>
+        <menuitem id="level_settings" name="Settings">
+            <menuitem id="property_type_set" name="settings_type" action="Technical_training.test_record1"/>  
+            <menuitem id="property_tags_set" name="settings_tags" action="Technical_training.test_record2"/>
+        </menuitem>
+    </menuitem>    
+
+
+          
+</odoo>
