@@ -1,7 +1,6 @@
 <odoo>
     <menuitem id="root_level" name="Real_estate">
-        <menuitem id="second_level" name="Advertaising">
-
+        <menuitem id="second_level" name="Advertising">
             <menuitem id="third_level" name="Properties" action="Technical_training.test_record"/>
 
         </menuitem>

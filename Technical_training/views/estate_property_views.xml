@@ -20,38 +20,94 @@
         <field name="name">estate.property.view.form</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
+            
+
             <form>
+                <button string="Vendi"
+                    type="object"
+                    name="Venduto"/>
+
+                    <button string="Cancellato"
+                    type="object"
+                    name="Cancellato" />
+                    
+
+
                 <sheet>
                     <group>
                         <h1>
                             <field name="name"/>
-                        </h1>    
+                        </h1>
+                        <field name="tag_ids" widget="many2many_tags"/>
+                        <field name="state"/>
+                        <field name="postcode"/>
+                        <field name="property_type_id" widget="many2one"/>
+                        <field name="date_available" string="Available From"/>
+                        <field name="expected_price"/>
+                        <field name="best_offer"/>
+                        <field name="selling_price"/>
                     </group>
-
+                    
+                        
                     <notebook>
                         
                         <page string="Description">
+
                         
                             <group>
                                 <field name="description"/>
+                                <field name="date_available"/>  
+                                <field name="bedrooms"/>
+                                <field name="living_area"/>
+                                <field name="garage"/>
+                                <field name="facades"/>
+                                <field name="garden"/>
+                                <field name="garden_area"/>
+                                <field name="garden_orientation"/>
+                                <field name="total_area"/>
+                            
                             </group>    
                         </page>
+                        <page string="Offers">
+                            <field name="offer_ids">
+                                <list>
+                                    <field name="price"/>
+                                    <field name="partner_id"/>
+
+                    
+                        
+
+
+                                    <field name="status"/>
+                                    <button title="Accept"
+                                    icon="fa-check"
+                                    type="object" 
+                                    name="action_accept"/>
+
+                                    <button title="Refuse"
+                                    icon="fa-times"
+                                    type="object" 
+                                    name="action_refuse"/>
+
+
+                                </list>
+
+                            </field>
+                        
+                          
+                        </page>
+                        <page string="Other info">
+                            <field name="Salesman"/>
+                            <field name="Buyer"/>
+
+                        </page>
+                        
                         
                         
                     </notebook>        
                 
                 
-                    <group>
-                        <field name="date"/>  
-                        <field name="bedrooms"/>
-                        <field name="living_area"/>
-                        <field name="garage"/>
-                        <field name="facades"/>
-                        <field name="garden"/>
-                        <field name="garden_area"/>
-                        <field name="garden_orientation"/>
-                    </group>
-                    
+                                  
                 </sheet>
             </form>
         </field>
@@ -65,7 +121,7 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
-                <field name="date"/>
+                <field name="date_available"/>
                 <field name="postcode"/>
                 <field name="living_area"/>
                 <field name="bedrooms"/>
