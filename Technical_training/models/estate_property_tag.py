@@ -5,6 +5,9 @@ class PropertyTag(models.Model):
     _description = "Tags"
     _sql_constraints = [
         ("unique_tag_name","UNIQUE(name)","Nomi tag saranno univoci")
-    ]
 
+    ]
+    _order = "name desc"
     name = fields.Char(required=True)
+    color = fields.Integer()
+

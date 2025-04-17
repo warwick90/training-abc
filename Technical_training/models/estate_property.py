@@ -33,8 +33,8 @@ class Real_estate(models.Model):
     postcode = fields.Char()
     description = fields.Text()
     best_offer = fields.Float(compute="_best_offer")
-    Salesman = fields.Text()
-    Buyer = fields.Text()
+    Salesman = fields.Many2one("res.users")
+    Buyer = fields.Many2one("res.partner")
     def _default_date(self):
         return fields.Date.today()
     date_available = fields.Date(default = _default_date)
@@ -50,7 +50,9 @@ class Real_estate(models.Model):
         string='orientation',
         selection=
         [('north', 'North'), ('south', 'South'), ('east', 'East'), ('west', 'West')],
-      
+        
+        default='north',
+        required=True,      
     )
     
   
@@ -105,7 +107,14 @@ class Real_estate(models.Model):
     def _check_constrains(self):
         for estate in self:
             if estate.selling_price < 5000:
-                raise ValidationError(_("Error selling"))      
+                raise ValidationError(_("Error selling"))  
+
+    def unlink(self):
+        if self.state == "new" or self.state == "canceled":
+            return super().unlink()
+        else:
+            raise UserError("Non puoi eliminarlo")
+
                 
     _sql_constraints = [
         ("check_price", "CHECK(price > 0)","Positive"),

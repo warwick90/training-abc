@@ -21,7 +21,7 @@ class EstateOffer(models.Model):
 
     partner_id = fields.Many2one("res.partner", required=True)
     property_id = fields.Many2one("estate.property", required=True)
-   # property_type_id = fields.One2many("property.id", required=True)
+    property_type_id = fields.Many2one("estate.property.type", required=True)
 
     @api.depends("validity")
     def _compute_date_deadline(self):
@@ -59,3 +59,13 @@ class EstateOffer(models.Model):
         for offer in self:
             if offer.price < 0.9* self.property_id.expected_price:
                 raise ValidationError(_("ok offer"))
+            
+    
+    @api.model
+    def create(self, vals_list):
+        if self.price <= self.property_id.best_offer: 
+            raise UserError(_("Esiste già un'offerta più alta"))
+        else:
+            res = super().create(vals_list)
+            self.env['estate.property'].browse(vals_list['property_id']).state = "received"
+            return res
